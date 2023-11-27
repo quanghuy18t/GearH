@@ -1,0 +1,285 @@
+﻿@model GearH.Models.Product
+@{
+    ViewBag.Title = Model.name;
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="MediaCenter, Template, eCommerce">
+    <meta name="robots" content="all">
+    <title>@ViewBag.Title</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+
+    <!-- Customizable CSS -->
+    <link rel="stylesheet" href="~/Content/css/main.css">
+    <link rel="stylesheet" href="~/Content/css/blue.css">
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/css/owl.transitions.css">
+    <link rel="stylesheet" href="~/Content/css/animate.min.css">
+    <link rel="stylesheet" href="~/Content/css/rateit.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="~/Content/css/lightbox.css">
+
+    <!-- Icons/Glyphs -->
+    <link rel="stylesheet" href="~/Content/css/font-awesome.css">
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body class="cnt-home">
+    <!-- ============================================== HEADER ============================================== -->
+    <header class="header-style-1">
+
+        <!-- ============================================== TOP MENU ============================================== -->
+        @Html.Action("LoginLogout", "User")
+        <!-- /.header-top -->
+        <!-- ============================================== TOP MENU : END ============================================== -->
+        <div class="main-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
+                        <!-- ============================================================= LOGO ============================================================= -->
+                        <div class="logo"> <a href="@Url.Action("Index","Home")"> <img src="~/Content/images/logo.png" alt="logo" width="220" height="60"> </a> </div>
+                        <!-- /.logo -->
+                        <!-- ============================================================= LOGO : END ============================================================= -->
+                    </div>
+                    <!-- /.logo-holder -->
+
+                    <div class="col-xs-12 col-sm-12 col-md-7 top-search-holder">
+                        <!-- /.contact-row -->
+                        <!-- ============================================================= SEARCH AREA ============================================================= -->
+                        <div class="search-area" style="width:600px">
+                            @using (Html.BeginForm("Search", "Home"))
+                            {
+                                <div class="control-group">
+                                    <input class="search-field" name="searchString" placeholder="Bạn muốn tìm gì?" style="width:543px">
+                                    <button type="submit" class="search-button"></button>
+                                </div>
+                            }
+                        </div>
+                        <!-- /.search-area -->
+                        <!-- ============================================================= SEARCH AREA : END ============================================================= -->
+                    </div>
+                    <!-- /.top-search-holder -->
+
+                    <div class="col-xs-12 col-sm-12 col-md-2 animate-dropdown top-cart-row">
+                        <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
+                        @Html.Action("CartPartial", "Cart")
+                        <!-- /.dropdown-cart -->
+                        <!-- ============================================================= SHOPPING CART DROPDOWN : END============================================================= -->
+                    </div>
+                    <!-- /.top-cart-row -->
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container -->
+
+        </div>
+        <!-- /.main-header -->
+        <!-- ============================================== MENU ============================================== -->
+        <div class="header-nav animate-dropdown">
+            <div class="container">
+                <div class="yamm navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button data-target="#mc-horizontal-menu-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                            <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="nav-bg-class">
+                        <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
+                            <div class="nav-outer">
+                                <ul class="nav navbar-nav">
+                                    <li class="active dropdown yamm-fw"> <a href="@Url.Action("Index","Home")" data-hover="dropdown" class="dropdown-toggle">Trang chủ</a> </li>
+                                    <li class="dropdown yamm mega-menu">
+                                        <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm</a>
+                                        <ul class="dropdown-menu container">
+                                            <li>
+                                                <div class="yamm-content ">
+                                                    <div class="row">
+                                                        @Html.Action("ProductPartial", "Home")
+                                                        <!-- /.col -->
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    @*<li class="dropdown"> <a href="contact.html">Tin tức</a> </li>
+                                    <li class="dropdown"> <a href="contact.html">Giới thiệu</a> </li>*@
+                                    <li class="dropdown"> <a href="@Url.Action("Index", "FeedBack")">Liên hệ</a> </li>
+                                </ul>
+                                <!-- /.navbar-nav -->
+                                <div class="clearfix"></div>
+                            </div>
+                            <!-- /.nav-outer -->
+                        </div>
+                        <!-- /.navbar-collapse -->
+
+                    </div>
+                    <!-- /.nav-bg-class -->
+                </div>
+                <!-- /.navbar-default -->
+            </div>
+            <!-- /.container-class -->
+
+        </div>
+        <!-- /.header-nav -->
+        <!-- ============================================== MENU : END ============================================== -->
+
+    </header>
+
+    <!-- ============================================== HEADER : END ============================================== -->
+    <div class="body-content outer-top-xs" id="top-banner-and-menu">
+        <div class="container">
+            <div class="row single-product">
+                <!-- ============================================== SIDEBAR ============================================== -->
+                <div class="col-xs-12 col-sm-12 col-md-3 sidebar">
+
+                    <!-- ================================== TOP NAVIGATION ================================== -->
+                    @Html.Action("CategoryPartial", "Home")
+                    <!-- /.side-menu -->
+                    <!-- ================================== TOP NAVIGATION : END ================================== -->
+                    <!-- ============================================== SPECIAL DEALS ============================================== -->
+
+                    <div class="sidebar-widget outer-bottom-small wow fadeInUp">
+                        <h3 class="section-title">Bán chạy</h3>
+                        <div class="sidebar-widget-body outer-top-xs">
+                            <div class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
+                                <div class="item">
+                                    <div class="products special-product">
+                                        @Html.Action("BestSellPartial", "Home")
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- /.sidebar-widget-body -->
+                    </div>
+                    <!-- /.sidebar-widget -->
+                    <!-- ============================================== SPECIAL DEALS : END ============================================== -->
+
+                </div>
+                <!-- /.sidemenu-holder -->
+                <!-- ============================================== SIDEBAR : END ============================================== -->
+                <div class='col-md-9'>
+                    <div class="detail-block">
+                        <div class="row  wow fadeInUp">
+
+                            <div class="col-xs-12 col-sm-6 col-md-5 gallery-holder">
+                                <div class="product-item-holder size-big single-product-gallery small-gallery">
+
+                                    <div id="owl-single-product">
+                                        <div class="single-product-gallery-item" id="slide1">
+                                            <a data-lightbox="image-1" href="~/Content/images/products/@Model.image">
+                                                <img class="img-responsive" alt="" src="~/Content/images/products/@Model.image">
+                                            </a>
+                                        </div><!-- /.single-product-gallery-item -->
+                                    </div><!-- /.single-product-slider -->
+
+                                </div><!-- /.single-product-gallery -->
+                            </div><!-- /.gallery-holder -->
+                            <div class='col-sm-6 col-md-7 product-info-block'>
+                                <div class="product-info">
+                                    <h1 class="name">@Model.name</h1>
+
+                                    <div class="stock-container info-container m-t-10">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <div class="stock-box">
+                                                    <span class="label">Thương hiệu : </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <div class="stock-box">
+                                                    <span class="value"> @Model.Brand.name</span>
+                                                </div>
+                                            </div>
+                                        </div><!-- /.row -->
+                                    </div><!-- /.stock-container -->
+
+                                    <div class="description-container m-t-20">
+                                        @Html.Raw(Model.describe.ToString().Replace("\n", "</p><p>"))
+                                    </div><!-- /.description-container -->
+
+                                    <div class="price-container info-container m-t-20">
+                                        <div class="row">
+
+
+                                            <div class="col-sm-6">
+                                                <div class="price-box">
+                                                    <span class="price" style="font-size:20px">@Html.FormatValue(Model.price, "{0:#,##0}") VNĐ</span>
+                                                </div>
+                                            </div>
+
+                                        </div><!-- /.row -->
+                                    </div><!-- /.price-container -->
+
+                                    <div class="quantity-container info-container">
+                                        <div class="row">
+
+                                            <div class="col-sm-2">
+                                                <span class="label">Số lượng :</span>
+                                            </div>
+
+                                            <div class="col-sm-2">
+                                                <div class="cart-quantity">
+                                                    <div class="quant-input">
+                                                        <input type="number" min="1" name="txtQuantity" />
+                                                        <input type="text" value="1">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-7">
+                                                <a href="@Url.Action("Add", "Cart", new { id = Model.idProduct, url = Request.Url.ToString() })" class="btn btn-primary">
+                                                    <i class="fa fa-shopping-cart inner-right-vs"></i> Thêm vào giỏ hàng
+                                                </a>
+                                            </div>
+
+
+                                        </div><!-- /.row -->
+                                    </div><!-- /.quantity-container -->
+                                </div><!-- /.product-info -->
+                            </div><!-- /.col-sm-7 -->
+                        </div><!-- /.row -->
+                    </div>
+                </div><!-- /.col -->
+                <div class="clearfix"></div>
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /#top-banner-and-menu -->
+    <!-- ============================================================= FOOTER ============================================================= -->
+    @Html.Action("FooterPartial", "Home")
+    <!-- ============================================================= FOOTER : END============================================================= -->
+    <!-- For demo purposes – can be removed on production -->
+    <!-- For demo purposes – can be removed on production : End -->
+    <!-- JavaScripts placed at the end of the document so the pages load faster -->
+    <script src="~/Content/js/jquery-1.11.1.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/bootstrap-hover-dropdown.min.js"></script>
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <script src="~/Content/js/echo.min.js"></script>
+    <script src="~/Content/js/jquery.easing-1.3.min.js"></script>
+    <script src="~/Content/js/bootstrap-slider.min.js"></script>
+    <script src="~/Content/js/jquery.rateit.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/lightbox.min.js"></script>
+    <script src="~/Content/js/bootstrap-select.min.js"></script>
+    <script src="~/Content/js/wow.min.js"></script>
+    <script src="~/Content/js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+﻿@model GearH.Models.Feedback
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="MediaCenter, Template, eCommerce">
+    <meta name="robots" content="all">
+    <title>@ViewBag.Title</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+
+    <!-- Customizable CSS -->
+    <link rel="stylesheet" href="~/Content/css/main.css">
+    <link rel="stylesheet" href="~/Content/css/blue.css">
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/css/owl.transitions.css">
+    <link rel="stylesheet" href="~/Content/css/animate.min.css">
+    <link rel="stylesheet" href="~/Content/css/rateit.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap-select.min.css">
+
+    <!-- Icons/Glyphs -->
+    <link rel="stylesheet" href="~/Content/css/font-awesome.css">
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <script src="~/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
+</head>
+<body class="cnt-home">
+    <!-- ============================================== HEADER ============================================== -->
+    <header class="header-style-1">
+
+        <!-- ============================================== TOP MENU ============================================== -->
+        @Html.Action("LoginLogout", "User")
+        <!-- /.header-top -->
+        <!-- ============================================== TOP MENU : END ============================================== -->
+        <div class="main-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
+                        <!-- ============================================================= LOGO ============================================================= -->
+                        <div class="logo"> <a href="@Url.Action("Index", "Home")"> <img src="~/Content/images/logo.png" alt="logo" width="220" height="60"> </a> </div>
+                        <!-- /.logo -->
+                        <!-- ============================================================= LOGO : END ============================================================= -->
+                    </div>
+                    <!-- /.logo-holder -->
+
+                    <div class="col-xs-12 col-sm-12 col-md-7 top-search-holder">
+                        <!-- /.contact-row -->
+                        <!-- ============================================================= SEARCH AREA ============================================================= -->
+                        <div class="search-area" style="width:600px">
+                            @using (Html.BeginForm("Search", "Home"))
+                            {
+                                <div class="control-group">
+                                    <input class="search-field" name="searchString" placeholder="Bạn muốn tìm gì?" style="width:543px">
+                                    <button type="submit" class="search-button"></button>
+                                </div>
+                            }
+                        </div>
+                        <!-- /.search-area -->
+                        <!-- ============================================================= SEARCH AREA : END ============================================================= -->
+                    </div>
+                    <!-- /.top-search-holder -->
+
+                    <div class="col-xs-12 col-sm-12 col-md-2 animate-dropdown top-cart-row">
+                        <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
+
+                        @Html.Action("CartPartial", "Cart")
+                        <!-- /.dropdown-cart -->
+                        <!-- ============================================================= SHOPPING CART DROPDOWN : END============================================================= -->
+                    </div>
+                    <!-- /.top-cart-row -->
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container -->
+
+        </div>
+        <!-- /.main-header -->
+        <!-- ============================================== MENU ============================================== -->
+        <div class="header-nav animate-dropdown">
+            <div class="container">
+                <div class="yamm navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button data-target="#mc-horizontal-menu-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                            <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="nav-bg-class">
+                        <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
+                            <div class="nav-outer">
+                                <ul class="nav navbar-nav">
+                                    <li class="active dropdown yamm-fw"> <a href="@Url.Action("Index", "Home")" data-hover="dropdown" class="dropdown-toggle">Trang chủ</a> </li>
+                                    <li class="dropdown yamm mega-menu">
+                                        <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm</a>
+                                        <ul class="dropdown-menu container">
+                                            <li>
+                                                <div class="yamm-content ">
+                                                    <div class="row">
+                                                        @Html.Action("ProductPartial", "Home")
+                                                        <!-- /.col -->
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    @*<li class="dropdown"> <a href="contact.html">Tin tức</a> </li>
+                                    <li class="dropdown"> <a href="contact.html">Giới thiệu</a> </li>*@
+                                    <li class="dropdown"> <a href="@Url.Action("Index", "FeedBack")">Liên hệ</a> </li>
+                                </ul>
+                                <!-- /.navbar-nav -->
+                                <div class="clearfix"></div>
+                            </div>
+                            <!-- /.nav-outer -->
+                        </div>
+                        <!-- /.navbar-collapse -->
+
+                    </div>
+                    <!-- /.nav-bg-class -->
+                </div>
+                <!-- /.navbar-default -->
+            </div>
+            <!-- /.container-class -->
+
+        </div>
+        <!-- /.header-nav -->
+        <!-- ============================================== MENU : END ============================================== -->
+
+    </header>
+
+    <!-- ============================================== HEADER : END ============================================== -->
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-inner">
+                <ul class="list-inline list-unstyled">
+                    <li><a href="#">Home</a></li>
+                    <li class='active'>Contact</li>
+                </ul>
+            </div><!-- /.breadcrumb-inner -->
+        </div><!-- /.container -->
+    </div><!-- /.breadcrumb -->
+
+    <div class="body-content">
+        <div class="container">
+            <div class="contact-page">
+                <div class="row">
+
+                    <div class="col-md-12 contact-map outer-bottom-vs">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.7725940421615!2d106.67290467351252!3d10.980529955398923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d1085e2b1c37%3A0x73bfa5616464d0ee!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBUaOG7pyBE4bqndSBN4buZdA!5e0!3m2!1svi!2s!4v1698674404675!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    @using (Html.BeginForm("Index", "FeedBack", FormMethod.Post))
+                    {
+                        <div class="col-md-9 contact-form">
+                            <div class="col-md-12 contact-title">
+                                <h4>Thông tin liên hệ</h4>
+                            </div>
+                            <div class="col-md-4 ">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "info-title" })
+                                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control unicase-form-control text-input" } })
+                                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "info-title" })
+                                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control unicase-form-control text-input" } })
+                                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "info-title" })
+                                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control unicase-form-control text-input" } })
+                                    @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.note, htmlAttributes: new { @class = "info-title" })
+                                    @Html.TextAreaFor(model => model.note, new { htmlAttributes = new { @class = "form-control text-box single-line" } })
+                                    @Html.ValidationMessageFor(model => model.note, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-12 outer-bottom-small m-t-20">
+                                <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Gửi</button>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="col-md-3 contact-info">
+                        <div class="contact-title">
+                            <h4>Thông tin</h4>
+                        </div>
+                        <div class="clearfix address">
+                            <span class="contact-i"><i class="fa fa-map-marker"></i></span>
+                            <span class="contact-span">06 Trần Văn Ơn, Phú Hoà, Thủ Dầu Một, Bình Dương</span>
+                        </div>
+                        <div class="clearfix phone-no">
+                            <span class="contact-i"><i class="fa fa-mobile"></i></span>
+                            <span class="contact-span">0392829243</span>
+                        </div>
+                        <div class="clearfix email">
+                            <span class="contact-i"><i class="fa fa-envelope"></i></span>
+                            <span class="contact-span"><a href="#">quanghuy.tbqh@gmail.com</a></span>
+                        </div>
+                    </div>
+                </div><!-- /.contact-page -->
+            </div><!-- /.row -->
+        </div>
+    </div>
+    <!-- /#top-banner-and-menu -->
+    <!-- ============================================================= FOOTER ============================================================= -->
+    @Html.Action("FooterPartial", "Home")
+    <!-- ============================================================= FOOTER : END============================================================= -->
+    <!-- For demo purposes – can be removed on production -->
+    <!-- For demo purposes – can be removed on production : End -->
+    <!-- JavaScripts placed at the end of the document so the pages load faster -->
+    <script src="~/Content/js/jquery-1.11.1.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/bootstrap-hover-dropdown.min.js"></script>
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <script src="~/Content/js/echo.min.js"></script>
+    <script src="~/Content/js/jquery.easing-1.3.min.js"></script>
+    <script src="~/Content/js/bootstrap-slider.min.js"></script>
+    <script src="~/Content/js/jquery.rateit.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/lightbox.min.js"></script>
+    <script src="~/Content/js/bootstrap-select.min.js"></script>
+    <script src="~/Content/js/wow.min.js"></script>
+    <script src="~/Content/js/scripts.js"></script>
+</body>
+</html>

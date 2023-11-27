@@ -1,0 +1,81 @@
+﻿@model GearH.Models.Account
+
+@{
+    ViewBag.Title = "Chi tiết tài khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    .dl-horizontal dt {
+        float: left;
+        width: 160px;
+        overflow: hidden;
+        clear: left;
+        text-align: right;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 180px;
+    }
+</style>
+
+<h2 style="text-align:center">CHI TIẾT TÀI KHOẢN</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.create_at)
+        </dt>
+
+        <dd>
+            @Html.FormatValue(Model.create_at, "{0:dd/MM/yyyy}")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.update_at)
+        </dt>
+
+        <dd>
+            @Html.FormatValue(Model.update_at, "{0:dd/MM/yyyy}")
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("VỀ TRANG QUẢN LÝ", "Index")
+</p>

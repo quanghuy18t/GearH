@@ -1,0 +1,45 @@
+﻿    @model IEnumerable<GearH.Models.Brand>
+
+@{
+    ViewBag.Title = "Quản lý hãng";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>QUẢN LÝ HÃNG</h2>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@Html.ActionLink("Thêm mới", "Create")</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead style="text-align:center">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.name)</th>
+                        <th>@Html.DisplayNameFor(model => model.idCategory) </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody style="text-align:center">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Category.name)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", new { id = item.idBrand })" class="btn btn-warning" role="button">Sửa</a>
+                                <a href="@Url.Action("Detail", new { id = item.idBrand })" class="btn btn-primary" role="button">Chi tiết</a>
+                                <a href="@Url.Action("Delete", new { id = item.idBrand })" class="btn btn-danger" role="button">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

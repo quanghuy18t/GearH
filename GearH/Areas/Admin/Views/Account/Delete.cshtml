@@ -1,0 +1,92 @@
+﻿@model GearH.Models.Account
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    h3, h4 {
+        color: red;
+        font-weight: bold;
+    }
+    .dl-horizontal dt {
+        float: left;
+        width: 160px;
+        overflow: hidden;
+        clear: left;
+        text-align: right;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 180px;
+    }
+</style>
+
+<h2>XÁC NHẬN THÔNG TIN CẦN XÓA</h2>
+<h3>Bạn chắc chắn xóa tài khoản này?</h3>
+<h4>@Html.Raw(ViewBag.ThongBao)</h4>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.create_at)
+        </dt>
+
+        <dd>
+            @Html.FormatValue(Model.create_at, "{0:dd/MM/yyyy}")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.update_at)
+        </dt>
+
+        <dd>
+            @Html.FormatValue(Model.update_at, "{0:dd/MM/yyyy}")
+        </dd>
+
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-primary" /> |
+            @Html.ActionLink("VỀ TRANG QUẢN LÝ", "Index")
+        </div>
+    }
+</div>

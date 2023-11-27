@@ -1,0 +1,29 @@
+﻿@using GearH.Models
+@{ 
+    Account ac = (Account)Session["Account"];
+}
+<div class="top-bar animate-dropdown">
+    <div class="container">
+        <div class="header-top-inner">
+            <div class="cnt-account">
+                <ul class="list-unstyled">
+                    @if (Session["Account"] == null)
+                    {
+                        <li><a href="@Url.Action("SignIn","User")"><i class="icon fa fa-user"></i>Đăng ký</a></li>
+                        <li><a href="@Url.Action("LogIn","User")"><i class="icon fa fa-sign-in"></i>Đăng nhập</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="#"><i class="icon fa fa-user"></i>Xin chào: @ac.name</a></li>
+                        <li><a href="@Url.Action("LogOut","User")"><i class="icon fa fa-sign-out"></i>Đăng xuất</a></li>
+                    }
+                </ul>
+            </div>
+            <!-- /.cnt-account -->
+            <!-- /.cnt-cart -->
+            <div class="clearfix"></div>
+        </div>
+        <!-- /.header-top-inner -->
+    </div>
+    <!-- /.container -->
+</div>

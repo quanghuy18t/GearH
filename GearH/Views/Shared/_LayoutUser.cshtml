@@ -1,0 +1,369 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="MediaCenter, Template, eCommerce">
+    <meta name="robots" content="all">
+    <title>@ViewBag.Title</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+
+    <!-- Customizable CSS -->
+    <link rel="stylesheet" href="~/Content/css/main.css">
+    <link rel="stylesheet" href="~/Content/css/blue.css">
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/css/owl.transitions.css">
+    <link rel="stylesheet" href="~/Content/css/animate.min.css">
+    <link rel="stylesheet" href="~/Content/css/rateit.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap-select.min.css">
+
+    <!-- Icons/Glyphs -->
+    <link rel="stylesheet" href="~/Content/css/font-awesome.css">
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body class="cnt-home">
+    <!-- Messenger Plugin chat Code -->
+    <!--<div id="fb-root"></div>-->
+
+    <!-- Your Plugin chat code -->
+    <!--<div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "163102586893332");
+        chatbox.setAttribute("attribution", "biz_inbox");
+    </script>-->
+
+    <!-- Your SDK code -->
+    <!--<script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v18.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>-->
+    <!-- ============================================== HEADER ============================================== -->
+    <header class="header-style-1">
+
+        <!-- ============================================== TOP MENU ============================================== -->
+        @Html.Action("LoginLogout", "User")
+        <!-- /.header-top -->
+        <!-- ============================================== TOP MENU : END ============================================== -->
+        <div class="main-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
+                        <!-- ============================================================= LOGO ============================================================= -->
+                        <div class="logo"> <a href="@Url.Action("Index","Home")"> <img src="~/Content/images/logo.png" alt="logo" width="220" height="60"> </a> </div>
+                        <!-- /.logo -->
+                        <!-- ============================================================= LOGO : END ============================================================= -->
+                    </div>
+                    <!-- /.logo-holder -->
+
+                    <div class="col-xs-12 col-sm-12 col-md-7 top-search-holder">
+                        <!-- /.contact-row -->
+                        <!-- ============================================================= SEARCH AREA ============================================================= -->
+                        <div class="search-area" style="width:600px">
+                            @using (Html.BeginForm("Search", "Home"))
+                            {
+                                <div class="control-group">
+                                    <input class="search-field" name="searchString" placeholder="Bạn muốn tìm gì?" style="width:543px">
+                                    <button type="submit" class="search-button"></button>
+                                </div>
+                            }
+                        </div>
+                        <!-- /.search-area -->
+                        <!-- ============================================================= SEARCH AREA : END ============================================================= -->
+                    </div>
+                    <!-- /.top-search-holder -->
+
+                    <div class="col-xs-12 col-sm-12 col-md-2 animate-dropdown top-cart-row">
+                        <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
+
+                        @Html.Action("CartPartial", "Cart")
+                        <!-- /.dropdown-cart -->
+                        <!-- ============================================================= SHOPPING CART DROPDOWN : END============================================================= -->
+                    </div>
+                    <!-- /.top-cart-row -->
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container -->
+
+        </div>
+        <!-- /.main-header -->
+        <!-- ============================================== MENU ============================================== -->
+        <div class="header-nav animate-dropdown">
+            <div class="container">
+                <div class="yamm navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button data-target="#mc-horizontal-menu-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                            <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="nav-bg-class">
+                        <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
+                            <div class="nav-outer">
+                                <ul class="nav navbar-nav">
+                                    <li class="active dropdown yamm-fw"> <a href="@Url.Action("Index","Home")" data-hover="dropdown" class="dropdown-toggle">Trang chủ</a> </li>
+                                    <li class="dropdown yamm mega-menu">
+                                        <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm</a>
+                                        <ul class="dropdown-menu container">
+                                            <li>
+                                                <div class="yamm-content ">
+                                                    <div class="row">
+                                                        @Html.Action("ProductPartial", "Home")
+                                                        <!-- /.col -->
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    @*<li class="dropdown"> <a href="contact.html">Tin tức</a> </li>
+                                        <li class="dropdown"> <a href="contact.html">Giới thiệu</a> </li>*@
+                                    <li class="dropdown"> <a href="@Url.Action("Index", "FeedBack")">Liên hệ</a> </li>
+                                </ul>
+                                <!-- /.navbar-nav -->
+                                <div class="clearfix"></div>
+                            </div>
+                            <!-- /.nav-outer -->
+                        </div>
+                        <!-- /.navbar-collapse -->
+
+                    </div>
+                    <!-- /.nav-bg-class -->
+                </div>
+                <!-- /.navbar-default -->
+            </div>
+            <!-- /.container-class -->
+
+        </div>
+        <!-- /.header-nav -->
+        <!-- ============================================== MENU : END ============================================== -->
+
+    </header>
+
+    <!-- ============================================== HEADER : END ============================================== -->
+    <div class="body-content outer-top-xs" id="top-banner-and-menu">
+        <div class="container">
+            <div class="row">
+                <!-- ============================================== SIDEBAR ============================================== -->
+                <div class="col-xs-12 col-sm-12 col-md-3 sidebar">
+
+                    <!-- ================================== TOP NAVIGATION ================================== -->
+                    @Html.Action("CategoryPartial", "Home")
+                    <!-- /.side-menu -->
+                    <!-- ================================== TOP NAVIGATION : END ================================== -->
+                    <!-- ============================================== SPECIAL DEALS ============================================== -->
+
+                    <div class="sidebar-widget outer-bottom-small wow fadeInUp">
+                        <h3 class="section-title">Bán chạy</h3>
+                        <div class="sidebar-widget-body outer-top-xs">
+                            <div class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
+                                <div class="item">
+                                    <div class="products special-product">
+                                        @Html.Action("BestSellPartial", "Home")
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- /.sidebar-widget-body -->
+                    </div>
+                    <!-- /.sidebar-widget -->
+                    <!-- ============================================== SPECIAL DEALS : END ============================================== -->
+
+                </div>
+                <!-- /.sidemenu-holder -->
+                <!-- ============================================== SIDEBAR : END ============================================== -->
+                <!-- ============================================== CONTENT ============================================== -->
+                <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
+                    <!-- ========================================== SECTION – HERO ========================================= -->
+
+                    <div id="hero">
+                        <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
+                            <div class="item" style="background-image: url(assets/images/sliders/01.jpg);">
+                                <div class="container-fluid">
+                                    <div class="caption bg-color vertical-center text-left">
+                                        <div class="slider-header fadeInDown-1">Top Brands</div>
+                                        <div class="big-text fadeInDown-1"> New Collections </div>
+                                        <div class="excerpt fadeInDown-2 hidden-xs"> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span> </div>
+                                        <div class="button-holder fadeInDown-3"> <a href="index.php?page=single-product" class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop Now</a> </div>
+                                    </div>
+                                    <!-- /.caption -->
+                                </div>
+                                <!-- /.container-fluid -->
+                            </div>
+                            <!-- /.item -->
+
+                            <div class="item" style="background-image: url(assets/images/sliders/02.jpg);">
+                                <div class="container-fluid">
+                                    <div class="caption bg-color vertical-center text-left">
+                                        <div class="slider-header fadeInDown-1">Spring 2016</div>
+                                        <div class="big-text fadeInDown-1"> Women <span class="highlight">Fashion</span> </div>
+                                        <div class="excerpt fadeInDown-2 hidden-xs"> <span>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit</span> </div>
+                                        <div class="button-holder fadeInDown-3"> <a href="index.php?page=single-product" class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop Now</a> </div>
+                                    </div>
+                                    <!-- /.caption -->
+                                </div>
+                                <!-- /.container-fluid -->
+                            </div>
+                            <!-- /.item -->
+
+                        </div>
+                        <!-- /.owl-carousel -->
+                    </div>
+
+                    <!-- ========================================= SECTION – HERO : END ========================================= -->
+                    <!-- ============================================== INFO BOXES ============================================== -->
+                    <div class="info-boxes wow fadeInUp">
+                        <div class="info-boxes-inner">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-4 col-lg-4">
+                                    <div class="info-box">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <h4 class="info-box-heading green">money back</h4>
+                                            </div>
+                                        </div>
+                                        <h6 class="text">30 Days Money Back Guarantee</h6>
+                                    </div>
+                                </div>
+                                <!-- .col -->
+
+                                <div class="hidden-md col-sm-4 col-lg-4">
+                                    <div class="info-box">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <h4 class="info-box-heading green">free shipping</h4>
+                                            </div>
+                                        </div>
+                                        <h6 class="text">Shipping on orders over $99</h6>
+                                    </div>
+                                </div>
+                                <!-- .col -->
+
+                                <div class="col-md-6 col-sm-4 col-lg-4">
+                                    <div class="info-box">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <h4 class="info-box-heading green">Special Sale</h4>
+                                            </div>
+                                        </div>
+                                        <h6 class="text">Extra $5 off on all items </h6>
+                                    </div>
+                                </div>
+                                <!-- .col -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.info-boxes-inner -->
+
+                    </div>
+                    <!-- /.info-boxes -->
+                    <!-- ============================================== INFO BOXES : END ============================================== -->
+                    <!-- ============================================== SCROLL TABS ============================================== -->
+                    @RenderBody()
+                    <!-- /.scroll-tabs -->
+                    <!-- ============================================== SCROLL TABS : END ============================================== -->
+                    <!-- ============================================== WIDE PRODUCTS ============================================== -->
+                    <div class="wide-banners wow fadeInUp outer-bottom-xs">
+                        <div class="row">
+                            <div class="col-md-7 col-sm-7">
+                                <div class="wide-banner cnt-strip">
+                                    <div class="image"> <img class="img-responsive" src="assets\images\banners\home-banner1.jpg" alt=""> </div>
+                                </div>
+                                <!-- /.wide-banner -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-5 col-sm-5">
+                                <div class="wide-banner cnt-strip">
+                                    <div class="image"> <img class="img-responsive" src="assets\images\banners\home-banner2.jpg" alt=""> </div>
+                                </div>
+                                <!-- /.wide-banner -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.wide-banners -->
+                    <!-- ============================================== WIDE PRODUCTS : END ============================================== -->
+                    <!-- ============================================== WIDE PRODUCTS ============================================== -->
+                    <div class="wide-banners wow fadeInUp outer-bottom-xs">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="wide-banner cnt-strip">
+                                    <div class="image"> <img class="img-responsive" src="assets\images\banners\home-banner.jpg" alt=""> </div>
+                                    <div class="strip strip-text">
+                                        <div class="strip-inner">
+                                            <h2 class="text-right">
+                                                New Mens Fashion<br>
+                                                <span class="shopping-needs">Save up to 40% off</span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                    <div class="new-label">
+                                        <div class="text">NEW</div>
+                                    </div>
+                                    <!-- /.new-label -->
+                                </div>
+                                <!-- /.wide-banner -->
+                            </div>
+                            <!-- /.col -->
+
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.wide-banners -->
+                    <!-- ============================================== WIDE PRODUCTS : END ============================================== -->\
+
+                </div>
+                <!-- /.homebanner-holder -->
+                <!-- ============================================== CONTENT : END ============================================== -->
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /#top-banner-and-menu -->
+    <!-- ============================================================= FOOTER ============================================================= -->
+    @Html.Action("FooterPartial", "Home")
+    <!-- ============================================================= FOOTER : END============================================================= -->
+    <!-- For demo purposes – can be removed on production -->
+    <!-- For demo purposes – can be removed on production : End -->
+    <!-- JavaScripts placed at the end of the document so the pages load faster -->
+    <script src="~/Content/js/jquery-1.11.1.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/bootstrap-hover-dropdown.min.js"></script>
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <script src="~/Content/js/echo.min.js"></script>
+    <script src="~/Content/js/jquery.easing-1.3.min.js"></script>
+    <script src="~/Content/js/bootstrap-slider.min.js"></script>
+    <script src="~/Content/js/jquery.rateit.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/lightbox.min.js"></script>
+    <script src="~/Content/js/bootstrap-select.min.js"></script>
+    <script src="~/Content/js/wow.min.js"></script>
+    <script src="~/Content/js/scripts.js"></script>
+</body>
+</html>

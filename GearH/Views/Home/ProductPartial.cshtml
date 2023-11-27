@@ -1,0 +1,15 @@
+﻿@foreach (var item in Model)
+{
+    <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
+        <h2 class="title">@item.name</h2>
+        <ul class="links">
+            @foreach (var brand in ViewBag.brand)
+            {
+                if (brand.idCategory == item.idCategory)
+                {
+                    <li><a href="@Url.Action("ProductFromCategory", "Product", new { idCategory = item.idCategory, idBrand = brand.idBrand })">@brand.name</a></li>
+                }
+            }
+        </ul>
+    </div>
+}

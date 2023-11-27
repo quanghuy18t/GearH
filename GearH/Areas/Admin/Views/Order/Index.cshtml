@@ -1,0 +1,62 @@
+﻿@model IEnumerable<GearH.Models.Order>
+
+@{
+    ViewBag.Title = "Quản lý đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>QUẢN LÝ ĐƠN HÀNG</h2>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="1000px" cellspacing="0">
+                <thead style="text-align:center">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.code)</th>
+                        <th>@Html.DisplayNameFor(model => model.name)</th>
+                        <th>@Html.DisplayNameFor(model => model.phone)</th>
+                        <th>@Html.DisplayNameFor(model => model.total)</th>
+                        <th>@Html.DisplayNameFor(model => model.status)</th>
+                        <th>@Html.DisplayNameFor(model => model.order_date)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody style="text-align:center">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.code)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.phone)
+                            </td>
+                            <td>
+                                @Html.FormatValue(item.total, "{0:#,##0 VNĐ}")
+                            </td>
+                            <td>
+                                @if (item.status == 1)
+                                {
+                                    <p>Chờ thanh toán</p>
+                                } else if (item.status == 2) {
+                                    <p>Đã thanh toán</p>
+                                }
+                            </td>
+                            <td>
+                                @Html.FormatValue(item.order_date, "{0:dd/MM/yyyy}")
+                            </td>
+                            <td width="200px">
+                                <a href="@Url.Action("Edit", new { id = item.idOrder })" class="btn btn-warning" role="button">Sửa</a>
+                                <a href="@Url.Action("Detail", new { id = item.idOrder })" class="btn btn-primary" role="button">Chi tiết</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

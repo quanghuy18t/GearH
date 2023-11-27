@@ -1,0 +1,69 @@
+﻿@model IEnumerable<GearH.Models.Product>
+
+@{
+    ViewBag.Title = "Quản lý sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@helper Truncate(string s, int length)
+{
+    if (s.Length < length)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0, length)<text>...</text>
+    }
+}
+
+<h2>QUẢN LÝ SẢN PHẨM</h2>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@Html.ActionLink("Thêm mới", "Create")</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="1000px" cellspacing="0">
+                <thead style="text-align:center">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.name)</th>
+                        <th>@Html.DisplayNameFor(model => model.image)</th>
+                        <th>@Html.DisplayNameFor(model => model.quantity)</th>
+                        <th>@Html.DisplayNameFor(model => model.sold)</th>
+                        <th>@Html.DisplayNameFor(model => model.price)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody style="text-align:center">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Truncate(item.name, 20)
+                            </td>
+                            <td>
+                                <img src="~/Content/images/products/@item.image" alt="@item.name" style="width:50px" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.quantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.sold)
+                            </td>
+                            <td>
+                                @Html.FormatValue(item.price, "{0:#,##0 VNĐ}")
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", new { id = item.idProduct })" class="btn btn-warning" role="button">Sửa</a>
+                                <a href="@Url.Action("Detail", new { id = item.idProduct })" class="btn btn-primary" role="button">Chi tiết</a>
+                                <a href="@Url.Action("Delete", new { id = item.idProduct })" class="btn btn-danger" role="button">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

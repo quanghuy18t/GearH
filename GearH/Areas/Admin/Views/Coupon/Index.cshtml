@@ -1,0 +1,57 @@
+﻿@model IEnumerable<GearH.Models.Coupon>
+
+@{
+    ViewBag.Title = "Quản lý khuyến mãi";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>QUẢN LÝ KHUYẾN MÃI</h2>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@Html.ActionLink("Thêm mới", "Create")</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead style="text-align:center">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.code) </th>
+                        <th>@Html.DisplayNameFor(model => model.discount) </th>
+                        <th>@Html.DisplayNameFor(model => model.quantity) </th>
+                        <th>@Html.DisplayNameFor(model => model.date_start) </th>
+                        <th>@Html.DisplayNameFor(model => model.date_end) </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody style="text-align:center">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.code)
+                            </td>
+                            <td>
+                                @item.discount%
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.quantity)
+                            </td>
+                            <td>
+                                @Html.FormatValue(item.date_start, "{0:dd/MM/yyyy}")
+                            </td>
+                            <td>
+                                @Html.FormatValue(item.date_end, "{0:dd/MM/yyyy}")
+                            </td>
+                            <td width="250px">
+                                <a href="@Url.Action("Edit", new { id = item.idCoupon })" class="btn btn-warning" role="button">Sửa</a>
+                                <a href="@Url.Action("Detail", new { id = item.idCoupon })" class="btn btn-primary" role="button">Chi tiết</a>
+                                <a href="@Url.Action("Delete", new { id = item.idCoupon })" class="btn btn-danger" role="button">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

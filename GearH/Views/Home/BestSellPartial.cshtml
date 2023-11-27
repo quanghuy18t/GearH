@@ -1,0 +1,31 @@
+﻿@foreach (var item in Model)
+{
+    <div class="product">
+        <div class="product-micro">
+            <div class="row product-micro-row">
+                <div class="col col-xs-5">
+                    <div class="product-image">
+                        <div class="image"> <a href="#"> <img src="~/Content/images/products/@item.image" alt=""> </a> </div>
+                        <!-- /.image -->
+
+                    </div>
+                    <!-- /.product-image -->
+                </div>
+                <!-- /.col -->
+                <div class="col col-xs-7">
+                    <div class="product-info">
+                        <h3 class="name"><a href="#">@item.name</a></h3>
+                        <div class="product-price"> <span class="price" style="color:red"> @Html.FormatValue(item.price, "{0:#,##0}") VNĐ </span> </div>
+                        <!-- /.product-price -->
+
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.product-micro-row -->
+        </div>
+        <!-- /.product-micro -->
+
+    </div>
+    <!-- /.product-micro -->
+}

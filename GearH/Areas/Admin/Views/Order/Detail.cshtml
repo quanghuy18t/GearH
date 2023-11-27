@@ -1,0 +1,48 @@
+﻿@model IEnumerable<GearH.Models.OrderDetail>
+@using GearH.Models
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>CHI TIẾT ĐƠN HÀNG @ViewBag.code </h2>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" cellspacing="0">
+                <thead style="text-align:center">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Product.name)</th>
+                        <th>@Html.DisplayNameFor(model => model.Product.image)</th>
+                        <th>@Html.DisplayNameFor(model => model.quantity)</th>
+                        <th>@Html.DisplayNameFor(model => model.total) </th>
+                    </tr>
+                </thead>
+                <tbody style="text-align:center">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Product.name)
+                            </td>
+                            <td>
+                                <img src="~/Content/images/products/@item.Product.image" alt="@item.Product.name" style="width:50px" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.quantity)
+                            </td>
+                            <td>
+                                @Html.FormatValue(item.total, "{0:#,##0 VNĐ}")
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <p>
+        &nbsp;&nbsp;&nbsp;@Html.ActionLink("VỀ TRANG QUẢN LÝ", "Index")
+    </p>
+</div>

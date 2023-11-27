@@ -1,0 +1,129 @@
+﻿@model GearH.Models.Product
+
+@{
+    ViewBag.Title = "Xóa sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    h3, h4 {
+        color: red;
+        font-weight: bold;
+    }
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+
+    .dl-horizontal dt {
+        float: left;
+        width: 160px;
+        overflow: hidden;
+        clear: left;
+        text-align: right;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 180px;
+    }
+</style>
+
+<h2>XÁC NHẬN THÔNG TIN CẦN XÓA</h2>
+<h3>Bạn chắc chắn xóa sản phẩm này?</h3>
+<h4>@Html.Raw(ViewBag.ThongBao)</h4>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Brand.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brand.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.image)
+        </dt>
+
+        <dd>
+            <img src="~/Content/images/products/@Model.image" alt="@Model.name" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.describe)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.describe.ToString().Replace("\n", "</p><p>"))
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.FormatValue(Model.price, "{0:#,##0 VNĐ}")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sold)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sold)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.create_at)
+        </dt>
+
+        <dd>
+            @Html.FormatValue(Model.create_at, "{0:dd/MM/yyyy}")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.update_at)
+        </dt>
+
+        <dd>
+            @Html.FormatValue(Model.update_at, "{0:dd/MM/yyyy}")
+        </dd>
+
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-primary" /> |
+            @Html.ActionLink("VỀ TRANG QUẢN LÝ", "Index")
+        </div>
+    }
+</div>

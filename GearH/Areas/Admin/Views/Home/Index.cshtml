@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Thống kê</h1>
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <div class="col-xl-13 col-lg-13">
+
+            <!-- Bar Chart -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Biểu đồ doanh thu - lợi nhuận</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="chart-bar">
+                                <canvas id="myBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <table class="table table-bordered" style="font-size:11px">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Ngày</th>
+                                        <th>Doanh thu</th>
+                                        <th>Lợi nhuận</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="load_data"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="~/Content/Admin/vendor/chart.js/Chart.min.js"></script>
+<script src="~/Content/Admin/js/demo/chart-bar-demo.js"></script>
+<script src="~/Content/Admin/js/demo/chart-pie-demo.js"></script>
+<script src="~/Content/Admin/moment/moment.min.js"></script>
+
